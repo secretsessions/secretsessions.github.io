@@ -7,28 +7,64 @@
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SL0LCK9Q2X"></script>
   <script>
+    const redirectUrl = "https://www.google.com";  // ✅ Change URL here if needed
+
     window.dataLayer = window.dataLayer || [];
     function gtag(){ dataLayer.push(arguments); }
 
-    // Load gtag
     gtag('js', new Date());
 
-    // Send a config hit and redirect once the hit is sent
     gtag('config', 'G-SL0LCK9Q2X', {
       'transport_type': 'beacon',
       'event_callback': function() {
-        window.location.href = "https://www.google.com";
+        window.location.href = redirectUrl;
       }
     });
 
     // Fallback in case the callback never fires (e.g., user blocks GA)
     setTimeout(function() {
-      window.location.href = "https://www.google.com";
+      window.location.href = redirectUrl;
     }, 3000); // 3 seconds
   </script>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      background: url('SS_LOGO_STORY.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    .message {
+      font-size: 2em;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .message a {
+      color: #aaddff;
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-  <p>If you are not redirected, <a href="https://www.google.com">click here</a>.</p>
+  <div class="message">
+    Redirecting...<br>
+    If you are not redirected, <a id="redirect-link" href="#">click here</a>.
+  </div>
+
+  <script>
+    // Set the link dynamically based on the redirectUrl
+    document.getElementById('redirect-link').href = redirectUrl;
+  </script>
 </body>
 </html>
-
