@@ -4,10 +4,13 @@
   <meta charset="UTF-8">
   <title>Redirecting...</title>
 
+  <!-- Preload logo image for faster loading -->
+  <link rel="preload" as="image" href="SS_LOGO_STORY.jpg">
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SL0LCK9Q2X"></script>
   <script>
-    const redirectUrl = "https://www.google.com";  // ✅ Change URL here if needed
+    const redirectUrl = "https://www.google.com";
 
     window.dataLayer = window.dataLayer || [];
     function gtag(){ dataLayer.push(arguments); }
@@ -21,10 +24,10 @@
       }
     });
 
-    // Fallback in case the callback never fires (e.g., user blocks GA)
+    // Fallback if analytics fails
     setTimeout(function() {
       window.location.href = redirectUrl;
-    }, 3000); // 3 seconds
+    }, 3000);
   </script>
 
   <style>
@@ -36,13 +39,15 @@
       background: url('SS_LOGO_STORY.jpg') no-repeat center center fixed;
       background-size: cover;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start; /* Push content near top */
       font-family: Arial, sans-serif;
       color: white;
     }
 
     .message {
+      margin-top: 40px; /* Adjust vertical spacing from the top */
       font-size: 2em;
       text-align: center;
       background: rgba(0, 0, 0, 0.6);
@@ -63,7 +68,6 @@
   </div>
 
   <script>
-    // Set the link dynamically based on the redirectUrl
     document.getElementById('redirect-link').href = redirectUrl;
   </script>
 </body>
